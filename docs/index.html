@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0c0b12">
+  <meta name="description" content="ECHO is your free AI space to think, create and solve. Start chatting immediately — no login needed.">
+  <title>ECHO — Ideas start here</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./config.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-defs" aria-hidden="true">
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.9 6.1L20 11l-6.1 1.9L12 19l-1.9-6.1L4 11l6.1-1.9L12 3Z"/><path d="m19 18 .7 2.3L22 21l-2.3.7L19 24l-.7-2.3L16 21l2.3-.7L19 18Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M20 11.5a8.2 8.2 0 0 1-8.4 8.2 10 10 0 0 1-3.8-.8L4 20l1.1-3.8A8.4 8.4 0 1 1 20 11.5Z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-3 18"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5a4 4 0 0 0-7 2.6 4.5 4.5 0 0 0-.8 7.9 3.7 3.7 0 0 0 4.5 4.7 3.2 3.2 0 0 0 3.3-3.2V5Zm0 0a4 4 0 0 1 7 2.6 4.5 4.5 0 0 1 .8 7.9 3.7 3.7 0 0 1-4.5 4.7 3.2 3.2 0 0 1-3.3-3.2V5Z"/><path d="M8 9c2 .2 3 1.4 4 3 1-1.6 2-2.8 4-3M8 15l4-3 4 3"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h16M6 16.5 16.5 6a2.1 2.1 0 0 1 3 3L9 19.5H6v-3Z"/></symbol>
+    <symbol id="i-light" viewBox="0 0 24 24"><path d="M9 18h6m-5 3h4M8.1 14.5a7 7 0 1 1 7.8 0c-1 .8-1 2.5-1 3.5h-5.8c0-1 .1-2.7-1-3.5Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.8 15.7A9 9 0 0 1 8.3 3.2 9 9 0 1 0 20.8 15.7Z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M10 3h4l.7 2.2 1.9.8 2.1-1.1 2.8 2.8-1.1 2.1.8 1.9 2.2.7v4l-2.2.7-.8 1.9 1.1 2.1-2.8 2.8-2.1-1.1-1.9.8-.7 2.2h-4l-.7-2.2-1.9-.8-2.1 1.1-2.8-2.8 1.1-2.1-.8-1.9L.6 15v-4l2.2-.7.8-1.9L2.5 6.3l2.8-2.8 2.1 1.1 1.9-.8L10 3Z" transform="translate(1 -1) scale(.92)"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 4h6M7 7l.8 13h8.4L17 7M10 11v6m4-6v6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.4 9.3A8 8 0 0 1 19 7l1 5M4 12l1 5a8 8 0 0 0 13.6-2.3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 20 6v5.5c0 5-3.4 8.3-8 10.5-4.6-2.2-8-5.5-8-10.5V6l8-4Z"/><path d="m8.7 12 2.2 2.2 4.4-4.4"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M13 4h7v7m0-7-9 9M20 13v7H4V4h7"/></symbol>
+    <symbol id="i-ellipsis" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <div id="sidebar-scrim" class="sidebar-scrim" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Conversation navigation">
+      <div class="brand-row">
+        <a class="brand" href="./" aria-label="ECHO home">
+          <span class="logo-mark"><span class="logo-core"></span></span>
+          <span class="brand-word">echo<span class="brand-dot">.</span></span>
+          <span class="brand-ai">AI</span>
+        </a>
+        <button class="icon-btn mobile-close" id="close-sidebar" aria-label="Close sidebar"><svg><use href="#i-x"/></svg></button>
+      </div>
+      <button class="new-chat" id="new-chat"><svg><use href="#i-plus"/></svg><span>New conversation</span><kbd>⌘ K</kbd></button>
+      <div class="side-divider"></div>
+      <div class="side-label">YOUR WORKSPACE</div>
+      <div class="side-current"><span class="side-current-icon"><svg><use href="#i-message"/></svg></span><span>AI Chat</span><span class="side-current-dot"></span></div>
+      <div class="sidebar-section-head"><span>RECENT CHATS</span><span id="chat-count">0</span></div>
+      <label class="search-box"><svg><use href="#i-search"/></svg><input id="search-chats" type="search" placeholder="Search conversations" autocomplete="off" aria-label="Search conversations"></label>
+      <nav class="chat-history" id="chat-history" aria-label="Saved conversations"></nav>
+      <div class="side-bottom">
+        <div class="privacy-card">
+          <span class="privacy-symbol"><svg><use href="#i-shield"/></svg></span>
+          <strong>Your space, your ideas.</strong>
+          <p>No sign up. Chats stay in this browser unless you delete them.</p>
+        </div>
+        <button class="sidebar-action" id="open-settings"><svg><use href="#i-settings"/></svg><span>Preferences</span><svg class="small-chevron"><use href="#i-chevron-down"/></svg></button>
+        <div class="side-footnote"><span class="tiny-online"></span> Free to use <span class="foot-separator">·</span> Made for everyone</div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-leading">
+          <button class="icon-btn hamburger" id="open-sidebar" aria-label="Open sidebar"><svg><use href="#i-menu"/></svg></button>
+          <span class="topbar-crumb">Workspace</span><svg class="crumb-arrow"><use href="#i-chev"/></svg><span class="topbar-page" id="current-title">New conversation</span>
+        </div>
+        <div class="topbar-actions">
+          <div class="presence-pill" title="Powered by hosted open-weight models"><span class="presence-light"></span> Free cloud AI</div>
+          <button class="icon-btn theme-button" id="theme-toggle" title="Toggle appearance" aria-label="Toggle light or dark theme"><svg><use href="#i-sun"/></svg></button>
+          <span class="guest-pill"><span class="guest-avatar">G</span><span>Guest</span><span class="guest-check">✓</span></span>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <section class="welcome" id="welcome" aria-labelledby="hero-title">
+          <div class="hero-orbit" aria-hidden="true"><div class="orbit outer"></div><div class="orbit inner"></div><div class="orbit-center"><span></span></div><div class="orbit-satellite"></div></div>
+          <div class="hero-eyebrow"><svg><use href="#i-sparkles"/></svg> YOUR SPACE FOR THE NEXT BIG IDEA</div>
+          <h1 id="hero-title">Think freely.<br><span>Explore endlessly.</span></h1>
+          <p class="hero-description">A little curiosity can take you anywhere.<br>Ask a question, untangle an idea, make something great.</p>
+          <div class="suggestions" id="suggestions">
+            <button class="suggestion" data-prompt="Help me build a beautiful, responsive personal portfolio website. Start with a simple plan."><span class="suggestion-icon purple"><svg><use href="#i-code"/></svg></span><span class="suggestion-content"><strong>Build something</strong><small>Bring your ideas to life</small></span><svg class="suggestion-arrow"><use href="#i-arrow"/></svg></button>
+            <button class="suggestion" data-prompt="Explain a difficult concept in a simple, friendly way, and use an example. Start by asking what I want to learn."><span class="suggestion-icon cyan"><svg><use href="#i-brain"/></svg></span><span class="suggestion-content"><strong>Learn anything</strong><small>Make the complex click</small></span><svg class="suggestion-arrow"><use href="#i-arrow"/></svg></button>
+            <button class="suggestion" data-prompt="Help me brainstorm five creative project ideas that could make everyday life easier."><span class="suggestion-icon amber"><svg><use href="#i-light"/></svg></span><span class="suggestion-content"><strong>Explore ideas</strong><small>See things a different way</small></span><svg class="suggestion-arrow"><use href="#i-arrow"/></svg></button>
+            <button class="suggestion" data-prompt="Help me write something clear, professional, and engaging. Start by asking what I'm writing."><span class="suggestion-icon green"><svg><use href="#i-pen"/></svg></span><span class="suggestion-content"><strong>Write beautifully</strong><small>Find the right words</small></span><svg class="suggestion-arrow"><use href="#i-arrow"/></svg></button>
+          </div>
+        </section>
+
+        <section class="conversation-view" id="conversation-view" aria-label="Conversation" hidden>
+          <div class="messages" id="messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+        </section>
+
+        <div class="bottom-area">
+          <div class="composer" id="composer">
+            <label class="sr-only" for="message-input">Message ECHO</label>
+            <textarea id="message-input" placeholder="Ask ECHO anything..." rows="1" maxlength="6500" spellcheck="true"></textarea>
+            <div class="composer-toolbar">
+              <div class="composer-left">
+                <span class="composer-mark"><svg><use href="#i-sparkles"/></svg></span>
+                <label class="model-select-wrap"><span class="sr-only">Choose AI model</span><select id="model-select"><option value="balanced">ECHO Balanced</option><option value="quick">ECHO Quick</option></select><svg><use href="#i-chevron-down"/></svg></label>
+              </div>
+              <div class="composer-right"><span class="enter-hint">↵ to send</span><button class="send-button" id="send-button" aria-label="Send message" disabled><svg><use href="#i-send"/></svg></button><button class="stop-button" id="stop-button" aria-label="Stop response" hidden><svg><use href="#i-stop"/></svg></button></div>
+            </div>
+          </div>
+          <div class="below-composer"><span>ECHO can make mistakes. Check important information.</span><span><span class="free-star">✦</span> No signup. No subscription. Just ideas.</span></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-heading">
+    <form method="dialog" id="settings-form">
+      <div class="dialog-heading"><span><span class="dialog-kicker">PERSONALIZE YOUR SPACE</span><strong id="settings-heading">Preferences</strong></span><button class="icon-btn" value="cancel" aria-label="Close preferences"><svg><use href="#i-x"/></svg></button></div>
+      <p class="dialog-intro">Make ECHO feel like your kind of workspace. Saved only in this browser.</p>
+      <label class="setting-label" for="instructions-input">How should ECHO respond?</label>
+      <textarea id="instructions-input" maxlength="1200" rows="5" placeholder="Example: Explain things step by step and give code examples when useful."></textarea>
+      <div class="settings-tip"><svg><use href="#i-shield"/></svg><span>Conversations are stored in this browser. Your prompts are sent to the AI provider to generate answers; avoid sharing sensitive personal information.</span></div>
+      <div class="dialog-actions"><button class="secondary-btn" id="export-chat" type="button">Export current chat</button><button class="primary-btn" value="save" id="save-settings">Save preferences</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
