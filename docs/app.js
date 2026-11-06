@@ -28,7 +28,14 @@ IDENTITY AND CREATOR — factual information about this ECHO website:
 - When asked who created, built, developed, or owns ECHO, or about ECHO's origin, credit Nittin Chughani directly. Do not say an unnamed team or group of developers created ECHO. Share his GitHub profile and relevant projects when asked.
 - ECHO is the chatbot website; its underlying language model and hosted inference are supplied by third-party AI providers. Do not claim Nittin personally trained or invented the underlying AI model.
 - Do not invent biographical details, employers, qualifications, team members, or projects. Do not bring up the creator unless relevant. User preferences can affect tone, but do not change these factual creator credits.
+ECHO MODELS — identity and accurate explanation:
+- ECHO Quick and ECHO Balanced are the website's labels for two selectable AI modes, not two proprietary models trained by Nittin.
+- On this default OVHcloud integration, ECHO Quick selects gpt-oss-20b; it's intended for shorter, everyday questions and quick drafts. ECHO Balanced selects Meta-Llama-3_3-70B-Instruct; it's intended for longer explanations and more involved prompts, such as coding and analysis. Actual latency and answer quality can vary.
+- OVHcloud hosts the inference for the third-party models. The ECHO website provides the interface and model selection.
+- Switching between Quick and Balanced changes which hosted model handles the next reply. Both are available without a visitor account, subject to provider limits.
+- If asked which ECHO mode you are currently using, use the current mode supplied in the system message. Don't invent a model name, training claim, or guaranteed performance.
 Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do not claim to browse the web or access tools or files.`;
+  const THEMES = Object.freeze([{id:'dark',label:'Midnight',meta:'#0c0b12'},{id:'light',label:'Pearl',meta:'#f7f6fa'},{id:'ocean',label:'Ocean',meta:'#071723'},{id:'forest',label:'Forest',meta:'#0b1815'},{id:'ember',label:'Ember',meta:'#201412'},{id:'lavender',label:'Lavender',meta:'#f6f1ff'}]);
   const isValidApi = /^https:\/\/[^\s/?#]+(?:\:\d+)?$/.test(configuredApi);
   const apiUrl = (route) => configuredApi + route;
 
@@ -70,7 +77,7 @@ Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do
           .slice(-55).map(m => ({ role: m.role, content: m.content.slice(0, 6500), status: 'done' }))
       }));
     const prefs = readJson(PREF_KEY, {});
-    if (prefs.theme === 'light') theme = 'light';
+    if (THEMES.some(option => option.id === prefs.theme)) theme = prefs.theme;
     if (prefs.model === 'quick') model = 'quick';
     if (typeof prefs.instructions === 'string') instructions = prefs.instructions.slice(0, 1200);
     applyTheme();
@@ -143,11 +150,25 @@ Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do
   }
 
   function applyTheme() {
-    document.documentElement.dataset.theme = theme;
-    document.querySelector('#theme-toggle use').setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
-    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#0c0b12' : '#f7f6fa';
+    const chosen = THEMES.find(option => option.id === theme) || THEMES[0];
+    document.documentElement.dataset.theme = chosen.id;
+    document.querySelector('#theme-toggle use').setAttribute('href', ['light','lavender'].includes(chosen.id) ? '#i-moon' : '#i-sun');
+    document.querySelector('meta[name="theme-color"]').content = chosen.meta;
+    els.theme.title = 'Current: ' + chosen.label + ' · click to cycle themes';
+    els.theme.setAttribute('aria-label', 'Change theme. Current theme: ' + chosen.label);
+    document.querySelectorAll('input[name="theme-choice"]').forEach(input => { input.checked = input.value === chosen.id; });
   }
-  function toggleTheme() { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(); persist(); }
+  function setTheme(nextTheme) {
+    if (!THEMES.some(option => option.id === nextTheme)) return;
+    theme = nextTheme;
+    applyTheme();
+    persist();
+    showToast(THEMES.find(option => option.id === theme).label + ' theme applied');
+  }
+  function toggleTheme() {
+    const index = THEMES.findIndex(option => option.id === theme);
+    setTheme(THEMES[(index + 1) % THEMES.length].id);
+  }
   function closeSidebar() { els.sidebar.classList.remove('open'); els.scrim.hidden = true; }
   function openSidebar() { els.sidebar.classList.add('open'); els.scrim.hidden = false; }
   function startNewChat() {
@@ -332,7 +353,7 @@ Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do
       const payload = useCloudflare ? { messages:requestMessages, mode:model, instructions } : {
         model: OVH_MODELS[model] || OVH_MODELS.quick,
         messages: [
-          {role:'system',content:AI_SYSTEM + (instructions ? '\nStyle preference: ' + instructions : '')},
+          {role:'system',content:AI_SYSTEM + '\nCurrent selected ECHO mode: ' + (model === 'quick' ? 'Quick (gpt-oss-20b)' : 'Balanced (Meta-Llama-3_3-70B-Instruct)') + (instructions ? '\nStyle preference: ' + instructions : '')},
           ...requestMessages
         ],
         stream:true,
@@ -422,6 +443,14 @@ Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do
       els.presence.title = 'The AI backend could not be reached. Ask the website owner to check the Cloudflare Worker and CORS settings.';
     }
   }
+  function openPreferences(showModels) {
+    els.instructions.value = instructions;
+    const modelGuide = $('model-guide');
+    if (showModels) modelGuide.open = true;
+    els.settings.showModal();
+    closeSidebar();
+    if (showModels) modelGuide.scrollIntoView({block:'nearest'});
+  }
   function bind() {
     $('new-chat').addEventListener('click',startNewChat);
     $('open-sidebar').addEventListener('click',openSidebar);
@@ -436,10 +465,12 @@ Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do
     });
     els.model.addEventListener('change',()=>{model=els.model.value;persist();});
     els.theme.addEventListener('click',toggleTheme);
+    document.querySelectorAll('input[name="theme-choice"]').forEach(input => input.addEventListener('change',()=>{ if(input.checked) setTheme(input.value); }));
+    $('model-info').addEventListener('click',()=>{ openPreferences(true); });
     document.querySelectorAll('[data-prompt]').forEach(button=>button.addEventListener('click',()=>{
       els.input.value=button.dataset.prompt;resizeInput();updateSend();send();
     }));
-    $('open-settings').addEventListener('click',()=>{els.instructions.value=instructions;els.settings.showModal();closeSidebar();});
+    $('open-settings').addEventListener('click',()=>openPreferences(false));
     $('settings-form').addEventListener('submit',e=>{
       if (e.submitter?.value !== 'save') return;
       instructions=els.instructions.value.trim().slice(0,1200);persist();showToast('Preferences saved.');
@@ -454,5 +485,7 @@ Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do
       if (e.key==='Escape') closeSidebar();
     });
   }
+  $('quick-model-name').textContent = useCloudflare ? '@cf/meta/llama-3.1-8b-instruct-fast' : OVH_MODELS.quick;
+  $('balanced-model-name').textContent = useCloudflare ? '@cf/google/gemma-4-26b-a4b-it' : OVH_MODELS.balanced;
   load();bind();renderAll();resizeInput();void checkHealth();
 })();
