@@ -2,7 +2,7 @@
 
 A responsive, browser-first AI chat interface. Visitors need no signup, subscription, Node.js or local server. Code is plain HTML/CSS/JavaScript for GitHub Pages.
 
-![Desktop preview](./preview-desktop.png)
+Website source is in [`docs/`](./docs). GitHub Pages will serve this folder once publishing is enabled.
 
 ## Publishing a *new* repository (leave the old `ECHO-AI` unchanged)
 
@@ -11,7 +11,7 @@ A responsive, browser-first AI chat interface. Visitors need no signup, subscrip
 1. Create a **new public** repository, named `echo-ai-chatbot`, using <https://github.com/new>. Add an initial README if you want to upload via GitHub connectors.
 2. Upload the `docs/` directory and this README **to the new repository**, not `ECHO-AI`. Include the optional `cloudflare/` folder only if desired.
 3. In the new repository, open **Settings → Pages**. Under **Build and deployment**, select **Deploy from a branch**, branch **main** and folder **/docs**, then **Save**.
-4. The anticipated GitHub Pages site URL is `https://nittinchughani.github.io/echo-ai-chatbot/` if the repository is named `echo-ai-chatbot` and owned by `NittinChughani`.
+4. Expected GitHub Pages URL after enabling publishing: `https://nittinchughani.github.io/echo-ai-chatbot/` if the repository is named `echo-ai-chatbot` and owned by `NittinChughani`.
 5. Send an actual chat prompt on the published site to verify the AI provider responds. This live call was *not* verified when this package was assembled.
 
 ### Features
