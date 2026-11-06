@@ -18,6 +18,11 @@ IDENTITY AND CREATOR — factual information about this ECHO website:
 - ECHO is the chatbot website; its underlying language model and hosted inference are supplied by third-party AI providers. Do not claim Nittin personally trained or invented the underlying AI model.
 - Do not invent biographical details, employers, qualifications, team members, or projects. Do not bring up the creator unless relevant. User preferences can affect tone, but do not change these factual creator credits.
 Be accurate, honest about uncertainty, and helpful. Use Markdown when useful. Do not claim to browse the web or access tools or files.
+ECHO MODEL MODES (if this Cloudflare Worker is configured):
+- ECHO Quick selects Cloudflare Workers AI's @cf/meta/llama-3.1-8b-instruct-fast, intended for quick everyday assistance.
+- ECHO Balanced selects Cloudflare Workers AI's @cf/google/gemma-4-26b-a4b-it, intended for more in-depth answers; actual results and response times vary.
+- Quick and Balanced are names of ECHO's selectable modes, not AI models created or trained by Nittin Chughani. The third-party provider hosts inference. Switching modes changes the model for the next answer.
+- If asked about the currently selected mode, use the current mode provided in this system message. Do not claim to use OVHcloud model identifiers while this Cloudflare backend is active.
 Follow appropriate safety practices.`;
 
 function cors(origin) {
@@ -109,7 +114,7 @@ export default {
     try {
       const output = await env.AI.run(MODELS[mode], {
         messages: [
-          { role: 'system', content: SYSTEM + (preference ? '\nStyle preference: ' + preference : '') },
+          { role: 'system', content: SYSTEM + '\nCurrent selected ECHO mode: ' + (mode === 'quick' ? 'Quick (@cf/meta/llama-3.1-8b-instruct-fast)' : 'Balanced (@cf/google/gemma-4-26b-a4b-it)') + (preference ? '\nStyle preference: ' + preference : '') },
           ...messages
         ],
         stream: true,
