@@ -38,10 +38,10 @@ It's a real web project built with HTML, CSS, and vanilla JavaScript, hosted on 
 | A focused chat experience | Tools that make it useful |
 | :--- | :--- |
 | **Instant access** — start chatting without signing up | **Conversation history** — revisit chats saved in your browser |
-| **Dark & light themes** — switch to your preferred look | **Chat search** — locate earlier conversations |
+| **Six color themes** — choose Midnight, Pearl, Ocean, Forest, Ember, or Lavender | **Chat search** — locate earlier conversations |
 | **Responsive layout** — use it on desktop or mobile | **Copy & regenerate** — make responses easier to reuse |
 | **Streaming replies** — watch responses arrive as they are generated | **Custom instructions** — personalize response style |
-| **Model options** — switch between available chat modes | **Markdown export** — take a conversation with you |
+| **Two explained AI modes** — learn when to use ECHO Quick vs ECHO Balanced | **Markdown export** — take a conversation with you |
 
 ## <a id="how-it-works"></a>How it works
 
