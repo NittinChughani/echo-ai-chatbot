@@ -1,46 +1,129 @@
-# ECHO AI — Public chatbot website
+<p align="center">
+  <img src="assets/echo-banner.svg" alt="ECHO AI — Ideas start here. Free, open-source AI chat website." width="100%" />
+</p>
 
-A responsive, browser-first AI chat interface. Visitors need no signup, subscription, Node.js or local server. Code is plain HTML/CSS/JavaScript for GitHub Pages.
+<h1 align="center">ECHO AI</h1>
 
-Website source is in [`docs/`](./docs). GitHub Pages will serve this folder once publishing is enabled.
+<p align="center">
+  <strong>Ideas start here.</strong><br/>
+  A thoughtfully designed AI chat experience, available to everyone — no signup, no installation.
+</p>
 
-## Publishing a *new* repository (leave the old `ECHO-AI` unchanged)
+<p align="center">
+  <a href="https://nittinchughani.github.io/echo-ai-chatbot/"><img alt="Launch ECHO" src="https://img.shields.io/badge/LAUNCH_ECHO-8B5CF6?style=for-the-badge&logo=googlechrome&logoColor=white"/></a>
+  <a href="https://github.com/NittinChughani/echo-ai-chatbot"><img alt="Open source" src="https://img.shields.io/badge/OPEN_SOURCE-171923?style=for-the-badge&logo=github&logoColor=white"/></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/LICENSE-MIT-16A085?style=for-the-badge"/></a>
+</p>
 
-> **Name restriction:** GitHub treats `ECHO-AI` and `echo-ai` as the same repository, so a separate repository needs a different name, named `echo-ai-chatbot`.
+<p align="center">
+  <a href="https://nittinchughani.github.io/echo-ai-chatbot/"><b>Try ECHO</b></a>
+  &nbsp;·&nbsp;
+  <a href="#features">Explore features</a>
+  &nbsp;·&nbsp;
+  <a href="#how-it-works">How it works</a>
+  &nbsp;·&nbsp;
+  <a href="#creator">Meet the creator</a>
+</p>
 
-1. Create a **new public** repository, named `echo-ai-chatbot`, using <https://github.com/new>. Add an initial README if you want to upload via GitHub connectors.
-2. Upload the `docs/` directory and this README **to the new repository**, not `ECHO-AI`. Include the optional `cloudflare/` folder only if desired.
-3. In the new repository, open **Settings → Pages**. Under **Build and deployment**, select **Deploy from a branch**, branch **main** and folder **/docs**, then **Save**.
-4. Expected GitHub Pages URL after enabling publishing: `https://nittinchughani.github.io/echo-ai-chatbot/` if the repository is named `echo-ai-chatbot` and owned by `NittinChughani`.
-5. Send an actual chat prompt on the published site to verify the AI provider responds. This live call was *not* verified when this package was assembled.
+---
+
+## Built for the conversation, not the setup
+
+ECHO is a **free, browser-based AI chatbot website** designed around a simple idea: great tools should be easy to access. Open a link, ask a question, brainstorm an idea, or work through a problem — all in a focused, responsive interface.
+
+It's a real web project built with HTML, CSS, and vanilla JavaScript, hosted on GitHub Pages. Visitors don't need an account or a local installation.
 
 ### Features
 
-- No visitor account and no payment required
-- Polished dark/light theme with responsive mobile layout
-- Local chat history and search, custom instructions, copy, regenerate, stop, Markdown export
-- JavaScript runs entirely in the browser; model inference is hosted remotely
-- AI provider configuration in `docs/config.js`
+| A focused chat experience | Tools that make it useful |
+| :--- | :--- |
+| **Instant access** — start chatting without signing up | **Conversation history** — revisit chats saved in your browser |
+| **Dark & light themes** — switch to your preferred look | **Chat search** — locate earlier conversations |
+| **Responsive layout** — use it on desktop or mobile | **Copy & regenerate** — make responses easier to reuse |
+| **Streaming replies** — watch responses arrive as they are generated | **Custom instructions** — personalize response style |
+| **Model options** — switch between available chat modes | **Markdown export** — take a conversation with you |
 
-### AI provider and limitations
+## <a id="how-it-works"></a>How it works
 
-The default attempts anonymous direct browser requests to OVHcloud AI Endpoints, with an advertised rate limit of **2 requests/minute per IP per model**. It is free to visitors but **not unlimited or guaranteed**. Messages are sent to OVHcloud for processing. Browser CORS rules, provider uptime and model availability can change. If this integration stops working, `cloudflare/worker.js` is an optional alternative that requires owner setup; see `OPTIONAL_CLOUDFLARE_BACKUP.md`.
+ECHO keeps the interface lightweight and the setup straightforward:
 
-Never put secret API keys in public JavaScript or GitHub files.
+1. **Open the [live website](https://nittinchughani.github.io/echo-ai-chatbot/).** GitHub Pages serves the static frontend from the `docs/` folder.
+2. **Send a message.** The browser sends the conversation to an external hosted AI endpoint.
+3. **Read, explore, and continue.** Responses appear in the chat interface; conversation history is saved in your browser's local storage.
 
-### Testing
+The default integration uses **OVHcloud AI Endpoints**. An optional Cloudflare Worker implementation is also included as a fallback for maintainers.
 
-JavaScript syntax was validated. The interface can be tested in a browser with mocked AI responses, but live hosted AI calls and GitHub Pages publishing must be checked on the deployed site. A passing static-code test alone does not certify that free remote inference works.
+> [!NOTE]
+> ECHO is free for visitors, but its third-party AI service has usage limits and may occasionally be unavailable. AI requests are processed by the external provider; don't send confidential information. Chat history is stored locally in your browser, not synced between devices.
 
-### Creator and credits
+## Technology
 
-**ECHO was created by [Nittin Chughani](https://github.com/NittinChughani)**, a Computer Science & Engineering student and freelance digital creator from Pakistan.
+| Layer | Technology |
+| :--- | :--- |
+| Interface | HTML5, CSS3, vanilla JavaScript |
+| Site hosting | GitHub Pages |
+| AI inference | Third-party hosted language models via OVHcloud AI Endpoints |
+| Optional fallback | Cloudflare Worker |
+| Chat storage | Browser `localStorage` |
 
-Other projects include [CodeLab Academy](https://github.com/NittinChughani/codelab-academy), a free C/C++ learning website, plus the programming repositories [C-CODE-BASIC-TO-ADVANCE](https://github.com/NittinChughani/C-CODE-BASIC-TO-ADVANCE) and [OOPS-IN-C-PLUS-PLUS](https://github.com/NittinChughani/OOPS-IN-C-PLUS-PLUS).
+## Run your own copy
 
-AI inference and the underlying language models come from third-party providers, not GitHub Pages. ECHO is an independently created open-source website, not an official product of OVHcloud or any AI model provider.
+You don't need Node.js or a framework build process to explore the source.
 
-## Reference
+1. Fork or clone this repository.
+2. Open the `docs/` directory to explore the website's source files.
+3. To publish a copy, enable **GitHub Pages → Deploy from a branch → `main` → `/docs`** in your fork's settings.
 
-- [GitHub Pages publishing](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-- [OVHcloud AI Endpoints limits](https://docs.ovhcloud.com/en/guides/public-cloud/ai-machine-learning/ai-endpoints-capabilities)
+For AI configuration, see [`docs/config.js`](docs/config.js). The optional backend is in [`cloudflare/worker.js`](cloudflare/worker.js) with [setup notes](OPTIONAL_CLOUDFLARE_BACKUP.md).
+
+<details>
+<summary><b>Explore the project structure</b></summary>
+
+~~~text
+echo-ai-chatbot/
+├── docs/
+│   ├── index.html         # Website
+│   ├── styles.css         # Visual design and responsive styling
+│   ├── app.js             # Chat interface and logic
+│   ├── config.js          # AI provider configuration
+│   └── favicon.svg        # Website icon
+├── assets/
+│   └── echo-banner.svg    # README artwork
+├── cloudflare/
+│   └── worker.js          # Optional fallback service
+├── OPTIONAL_CLOUDFLARE_BACKUP.md
+├── LICENSE
+└── README.md
+~~~
+
+</details>
+
+## Creator
+
+**ECHO was created by [Nittin Chughani](https://github.com/NittinChughani)**, a Computer Science & Engineering student and digital creator from Pakistan.
+
+ECHO is part of an ongoing effort to build useful, accessible open-source projects — tools that people can learn from and actually use.
+
+**More from Nittin**
+
+| Project | What it offers |
+| :--- | :--- |
+| **[CodeLab Academy](https://github.com/NittinChughani/codelab-academy)** | A free, interactive C/C++ learning website with lessons, challenges, quizzes, and a coding playground. [Try it live](https://nittinchughani.github.io/codelab-academy/). |
+| **[C-CODE-BASIC-TO-ADVANCE](https://github.com/NittinChughani/C-CODE-BASIC-TO-ADVANCE)** | C programming practice and learning resources. |
+| **[OOPS-IN-C-PLUS-PLUS](https://github.com/NittinChughani/OOPS-IN-C-PLUS-PLUS)** | Object-oriented programming work in C++. |
+
+<p align="center">
+  <a href="https://github.com/NittinChughani"><b>Explore Nittin's GitHub profile</b></a>
+</p>
+
+---
+
+## Open source & contributions
+
+ECHO is released under the [MIT License](LICENSE). Feel free to explore the implementation, fork the project, and suggest improvements through [GitHub Issues](https://github.com/NittinChughani/echo-ai-chatbot/issues).
+
+The **ECHO website** was created by Nittin Chughani. The underlying AI models and hosted inference are supplied by third parties; ECHO does not claim to have developed or trained those models.
+
+<p align="center">
+  <sub>Made to be useful, built to be shared.</sub>
+</p>
