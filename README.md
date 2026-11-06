@@ -32,9 +32,13 @@ Never put secret API keys in public JavaScript or GitHub files.
 
 JavaScript syntax was validated. The interface can be tested in a browser with mocked AI responses, but live hosted AI calls and GitHub Pages publishing must be checked on the deployed site. A passing static-code test alone does not certify that free remote inference works.
 
-### Credits
+### Creator and credits
 
-AI inference is provided by third parties, not GitHub Pages. ECHO is an independent open-source interface, not an official OVHcloud product.
+**ECHO was created by [Nittin Chughani](https://github.com/NittinChughani)**, a Computer Science & Engineering student and freelance digital creator from Pakistan.
+
+Other projects include [CodeLab Academy](https://github.com/NittinChughani/codelab-academy), a free C/C++ learning website, plus the programming repositories [C-CODE-BASIC-TO-ADVANCE](https://github.com/NittinChughani/C-CODE-BASIC-TO-ADVANCE) and [OOPS-IN-C-PLUS-PLUS](https://github.com/NittinChughani/OOPS-IN-C-PLUS-PLUS).
+
+AI inference and the underlying language models come from third-party providers, not GitHub Pages. ECHO is an independently created open-source website, not an official product of OVHcloud or any AI model provider.
 
 ## Reference
 
