@@ -80,7 +80,7 @@
         </div>
         <div class="topbar-actions">
           <div class="presence-pill" title="Powered by hosted open-weight models"><span class="presence-light"></span> Free cloud AI</div>
-          <button class="icon-btn theme-button" id="theme-toggle" title="Toggle appearance" aria-label="Toggle light or dark theme"><svg><use href="#i-sun"/></svg></button>
+          <button class="icon-btn theme-button" id="theme-toggle" title="Cycle color theme" aria-label="Change color theme"><svg><use href="#i-sun"/></svg></button>
           <span class="guest-pill"><span class="guest-avatar">G</span><span>Guest</span><span class="guest-check">✓</span></span>
         </div>
       </header>
@@ -110,7 +110,7 @@
             <div class="composer-toolbar">
               <div class="composer-left">
                 <span class="composer-mark"><svg><use href="#i-sparkles"/></svg></span>
-                <label class="model-select-wrap"><span class="sr-only">Choose AI model</span><select id="model-select"><option value="balanced">ECHO Balanced</option><option value="quick">ECHO Quick</option></select><svg><use href="#i-chevron-down"/></svg></label>
+                <label class="model-select-wrap"><span class="sr-only">Choose AI model</span><select id="model-select"><option value="balanced">ECHO Balanced</option><option value="quick">ECHO Quick</option></select><svg><use href="#i-chevron-down"/></svg></label><button class="model-help-button" id="model-info" type="button" title="Learn about ECHO Quick and Balanced" aria-label="What are ECHO Quick and Balanced?">?</button>
               </div>
               <div class="composer-right"><span class="enter-hint">↵ to send</span><button class="send-button" id="send-button" aria-label="Send message" disabled><svg><use href="#i-send"/></svg></button><button class="stop-button" id="stop-button" aria-label="Stop response" hidden><svg><use href="#i-stop"/></svg></button></div>
             </div>
@@ -125,6 +125,25 @@
     <form method="dialog" id="settings-form">
       <div class="dialog-heading"><span><span class="dialog-kicker">PERSONALIZE YOUR SPACE</span><strong id="settings-heading">Preferences</strong></span><button class="icon-btn" value="cancel" aria-label="Close preferences"><svg><use href="#i-x"/></svg></button></div>
       <p class="dialog-intro">Make ECHO feel like your kind of workspace. Saved only in this browser.</p>
+      <div class="theme-preferences">
+        <div class="setting-heading-row"><span class="setting-label">Choose your theme</span><small>Instant preview · saved automatically</small></div>
+        <div class="theme-grid" role="group" aria-label="ECHO appearance themes">
+          <label class="theme-option"><input type="radio" name="theme-choice" value="dark"><span class="theme-option-body"><span class="theme-swatch swatch-midnight"></span><strong>Midnight</strong><small>Signature dark</small></span></label>
+          <label class="theme-option"><input type="radio" name="theme-choice" value="light"><span class="theme-option-body"><span class="theme-swatch swatch-pearl"></span><strong>Pearl</strong><small>Clean & bright</small></span></label>
+          <label class="theme-option"><input type="radio" name="theme-choice" value="ocean"><span class="theme-option-body"><span class="theme-swatch swatch-ocean"></span><strong>Ocean</strong><small>Deep blue</small></span></label>
+          <label class="theme-option"><input type="radio" name="theme-choice" value="forest"><span class="theme-option-body"><span class="theme-swatch swatch-forest"></span><strong>Forest</strong><small>Quiet green</small></span></label>
+          <label class="theme-option"><input type="radio" name="theme-choice" value="ember"><span class="theme-option-body"><span class="theme-swatch swatch-ember"></span><strong>Ember</strong><small>Warm & cozy</small></span></label>
+          <label class="theme-option"><input type="radio" name="theme-choice" value="lavender"><span class="theme-option-body"><span class="theme-swatch swatch-lavender"></span><strong>Lavender</strong><small>Soft pastel</small></span></label>
+        </div>
+      </div>
+      <details class="model-guide" id="model-guide">
+        <summary>Which ECHO model should I use?<span>Quick vs Balanced</span></summary>
+        <div class="model-guide-body">
+          <div class="model-guide-row"><strong>ECHO Quick <span class="model-guide-tag">Everyday</span></strong><p>Great for simple questions, quick explanations and short drafts. It is intended as the lighter option.</p><small>Current provider model: <code id="quick-model-name">gpt-oss-20b</code></small></div>
+          <div class="model-guide-row"><strong>ECHO Balanced <span class="model-guide-tag">More depth</span></strong><p>Good for longer explanations, coding questions and more involved tasks. Response speed and quality depend on the provider and the question.</p><small>Current provider model: <code id="balanced-model-name">Meta-Llama-3_3-70B-Instruct</code></small></div>
+          <p class="model-guide-footnote">Quick and Balanced are ECHO's names for different third-party hosted AI models, not models created or trained by ECHO's developer. Switching changes which model handles your next message.</p>
+        </div>
+      </details>
       <label class="setting-label" for="instructions-input">How should ECHO respond?</label>
       <textarea id="instructions-input" maxlength="1200" rows="5" placeholder="Example: Explain things step by step and give code examples when useful."></textarea>
       <div class="settings-tip"><svg><use href="#i-shield"/></svg><span>Conversations are stored in this browser. Your prompts are sent to the AI provider to generate answers; avoid sharing sensitive personal information.</span></div>
